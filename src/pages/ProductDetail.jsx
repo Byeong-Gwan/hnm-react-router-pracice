@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import React from "react";
 
-function App() {
+const ProductDetail = () => {
+  
 
   return (
     <div>
@@ -9,4 +11,4 @@ function App() {
   )
 }
 
-export default App
+export default ProductDetail;

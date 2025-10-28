@@ -1,0 +1,103 @@
+.login-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.nav-section {
+    display: flex;
+    justify-content: center;
+}
+.menu-area {
+    /* Use grid to center the menu perfectly and keep search at right */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* left spacer | menu | right area */
+    align-items: center;
+    gap: 20px;
+}
+
+.meun-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center; /* center menu items */
+    grid-column: 2; /* center column */
+}
+
+.meun-list li {
+    padding: 10px;
+}
+
+/* style the search area inside menu-area */
+.menu-area > div { /* keep icon and input aligned */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* push only the search area to the far right */
+.search-area {
+    grid-column: 3; /* right column */
+    justify-self: end;
+}
+
+/* simple, clean search input styling */
+.search-area svg {
+    color: #666;
+}
+
+.search-area input[type="text"] {
+    height: 36px;
+    width: 260px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    background: #fff;
+    font-size: 14px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-area input[type="text"]::placeholder {
+    color: #999;
+}
+
+.search-area input[type="text"]:focus {
+    outline: none;
+    border-color: #222;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+}
+
+/* Responsive: mobile adjustments */
+@media (max-width: 768px) {
+  /* stack: search on top-right, menu below centered */
+  .menu-area {
+    grid-template-columns: 1fr; /* single column */
+    gap: 10px;
+  }
+
+  .search-area {
+    grid-column: 1; /* first row */
+    justify-self: end; /* right align */
+  }
+
+  .meun-list {
+    grid-column: 1; /* second row */
+    justify-content: center;
+    flex-wrap: wrap; /* wrap nicely */
+    gap: 6px 12px; /* row/column gap */
+  }
+
+  .meun-list li {
+    padding: 6px 8px; /* tighter touch targets */
+    word-break: keep-all; /* prevent awkward breaks for Korean */
+    white-space: nowrap;  /* keep each item in one piece */
+  }
+
+  .search-area input[type="text"] {
+    width: 160px;
+    height: 34px;
+  }
+}
+
