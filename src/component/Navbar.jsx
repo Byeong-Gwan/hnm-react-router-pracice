@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-const Navbar = () => {
+const Navbar = ({ authenticate, userId, handleLogout }) => {
     const meunList = ['여성', 'Divided', '남성', '신생아/유아', '아동', 'H&M Home', 'Sale', '지속가능성'];
     const navigator = useNavigate();
 
@@ -13,12 +13,27 @@ const Navbar = () => {
         navigator('/login');
     }
 
+    const getClickLogout = () => {
+        if (handleLogout) {
+            handleLogout();
+        }
+    }
+
     return (
         <div>
             <div>
                 <div className="login-button">
+                    
+                    {authenticate && userId && (
+                        <span style={{ marginRight: 8 }}>{userId}</span>
+                    )}
                     <FontAwesomeIcon icon={faUser} />
-                    <div onClick={getClickLogin}>로그인</div>
+
+                    {authenticate ? (
+                        <div onClick={getClickLogout}>로그아웃</div>
+                    ) : (
+                        <div onClick={getClickLogin}>로그인</div>
+                    )}
                 </div>
             </div>
             <div className="nav-section">
