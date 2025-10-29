@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react'
 import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-const Login = ({setAuthenticate}) => {
+const Login = ({ setAuthenticate, setUserId }) => {
   const navigator = useNavigate();
+  const [email, setEmail] = useState('');
   const logunUser = (event) => {
     event.preventDefault();
     setAuthenticate(true);
+    if (setUserId) {
+      setUserId(email);
+    }
     navigator('/');
   }
   
@@ -20,7 +24,7 @@ const Login = ({setAuthenticate}) => {
               <Form onSubmit={(event) => logunUser(event)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" />
+                  <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                   </Form.Text>

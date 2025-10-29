@@ -22,15 +22,22 @@ import PrivateRoute from './route/PrivateRoute';
  */
 function App() {
   const [authenticate, setAuthenticate] = useState(false); // ture 로그인이 됨
+  const [userId, setUserId] = useState('');
+
+  const handleLogout = () => {
+    setAuthenticate(false);
+    
+  }
+
   useEffect(() => {
     
   }, [authenticate]);
   return (
     <div>
-      <Navbar />
+      <Navbar authenticate={authenticate} userId={userId} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login setAuthenticate={setAuthenticate} />} />
+        <Route path="/login" element={<Login setAuthenticate={setAuthenticate} setUserId={setUserId} />} />
         <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate}/>} />
       </Routes>
     </div>
