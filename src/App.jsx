@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import React from "react";
 import './App.css'
-import { Routes, Route } from 'react-router'
+import { Routes, Route } from 'react-router-dom'
 import ProductAll from './pages/ProductAll'
 import Login from './pages/Login'
 import Navbar from './component/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PrivateRoute from './route/privateRoute';
+import PrivateRoute from './route/PrivateRoute';
 /**
  * 1. 전체상품 페지, 로인, 상세페이지
  * 2. 전체 상품페이지에서는 전체 상품을 볼수 있다.
