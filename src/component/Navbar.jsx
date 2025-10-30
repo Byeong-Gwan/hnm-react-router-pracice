@@ -19,6 +19,14 @@ const Navbar = ({ authenticate, userId, handleLogout }) => {
         }
     }
 
+    const search = (event) => {
+        if (event.key === 'Enter') {
+            // 입력한 검색어 일어옴
+            let keyword = event.target.value;
+            navigator(`/?q=${encodeURIComponent(keyword)}`);
+        }
+    }
+
     return (
         <div>
             <div>
@@ -48,7 +56,7 @@ const Navbar = ({ authenticate, userId, handleLogout }) => {
             
                 <div className="search-area">
                     <FontAwesomeIcon icon={faSearch} />
-                    <input type="text" />
+                    <input type="text" onKeyPress={(event) =>search(event)} />
                 </div>
             </div>    
         </div>
